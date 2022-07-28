@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calc</title>
+</head>
+<body>
+    <div class="form"> <!-- обертка для формы -->
+        <label for="firstField" class="labelFirst">Введите первое число: </label>
+        
+        <div class="clockface"> <!-- циферблат для воода чисел -->
+            <input type="button" id = '0' class="zerO" value="0" onclick = "return fieldVvod('0')">
+            <input type="button" id = '1' class="onE" value="1" onclick = "return fieldVvod('1')">
+            <input type="button" id = '2' class="twO" value="2" onclick = "return fieldVvod('2')">
+            <input type="button" id = '3' class="threE" value="3" onclick = "return fieldVvod('3')">
+            <input type="button" id = '4' class="fouR" value="4" onclick = "return fieldVvod('4')">
+            <input type="button" id = '5' class="fivE" value="5" onclick = "return fieldVvod('5')">
+            <input type="button" id = '6' class="siX" value="6" onclick = "return fieldVvod('6')">
+            <input type="button" id = '7' class="seveN" value="7" onclick = "return fieldVvod('7')">
+            <input type="button" id = '8' class="eighT" value="8" onclick = "return fieldVvod('8')">
+            <input type="button" id = '9' class="ninE" value="9" onclick = "return fieldVvod('9')">
+        </div>
+        
+        <p class="firstField">надо добавить в гит проект и обновлять его</p>
+        <input type="button" class="vvedenoFirst" value="Число введено!"> <br>
+        <label for="secondField" class="labelSecond" hidden>Введите второе число: </label>
+        <p class="secondField" hidden></p>
+        <input type="button" class="vvedenoSecond" value="Число введено!" hidden> <br>
+        
+        <div class="actioN" hidden> <!-- действия с уже введенными числами-строками -->
+            <input type="submit" class="equalss" value="=">
+            <input type="button" class="plusss" id="plusss" value="+">
+            <input type="button" class="minuss" value="-">
+            <input type="button" class="multipll" value="*">
+            <input type="button" class="diviss" value="/">
+            <input type="button" class="sqring" value="^2">
+            <input type="button" class="sqrroot" value="sqrt">
+        </div>
+        
+        <label for="thirdField">Ответ: </label>
+        <p class="thirdField"></p>
+               
+    </div>
+    
+<script>
+	var x = 0; //переменная для функции fieldVvod чтобы она понимала в какое поле вводить, другие условия воспринимает почему-то коряво (пробовал firstField.hidden = false;)
+	var actioN = document.querySelector('.actioN');
+    var plusss = document.querySelector('.plusss');
+    var equalss = document.querySelector('.equalss');
+	var vvedenoFirst = document.querySelector('.vvedenoFirst');
+	var vvedenoSecond = document.querySelector('.vvedenoSecond');
+	var clockface = document.querySelector('.clockface');	
+    var zerO = document.querySelector('.zerO');
+	var onE = document.querySelector('.onE');
+	var twO = document.querySelector('.twO');
+	var threE = document.querySelector('.threE');
+	var fouR = document.querySelector('.fouR');
+	var fivE = document.querySelector('.fivE');
+	var siX = document.querySelector('.siX');
+    var seveN = document.querySelector('.seveN');
+	var eighT = document.querySelector('.eighT');
+	var ninE = document.querySelector('.ninE');
+	
+	
+    plusss.addEventListener('click', slojit); 
+    equalss.addEventListener('click', isEquals); //равно
+	
+	vvedenoFirst.addEventListener('click', pervyiVvod); //кнопка для подтверждения ввода
+	vvedenoSecond.addEventListener('click', vtoroiVvod); //кнопка для подтверждения ввода
+	
+	zerO.addEventListener('click', isEquals);
+	onE.addEventListener('click', isEquals);
+	twO.addEventListener('click', isEquals);
+	threE.addEventListener('click', isEquals);
+	fouR.addEventListener('click', isEquals);
+	fivE.addEventListener('click', isEquals);
+	siX.addEventListener('click', isEquals);
+	seveN.addEventListener('click', isEquals);
+	eighT.addEventListener('click', isEquals);
+	ninE.addEventListener('click', isEquals);
+    
+    
+   
+    var firstField = document.querySelector('.firstField'); //первое поле
+    var secondField = document.querySelector('.secondField'); //второе поле
+    var thirdField = document.querySelector('.thirdField'); //итог
+    var labelFirst = document.querySelector('.labelFirst'); //изменение названия 1 ярлыка после ввдения в первое поле
+    var labelSecond = document.querySelector('.labelSecond'); //изменение 2 ярлыка
+    
+    
+    function pervyiVvod () {
+		vvedenoSecond.hidden = false;
+        labelFirst.textContent = 'Первое число:'
+		vvedenoFirst.hidden = true;
+		secondField.before(clockface) 
+		labelSecond.hidden = false;
+		secondField.hidden = false;
+		++x;
+    }
+	
+	function vtoroiVvod () {
+		vvedenoSecond.hidden = true;
+		labelSecond.textContent = 'Второе число:'
+		clockface.hidden = true;
+		++x;
+	}
+
+    
+    function slojit() {
+        a=5;
+        b=7;
+        itog = a+b; //работает
+    }
+    
+    
+    function isEquals() {
+        thirdField.textContent = itog; //работает
+        
+    }
+	
+	function fieldVvod (id) {
+		if (x === 0) {
+			firstField.textContent += id;
+		}
+		else if (x === 1) { 
+			secondField.textContent += id;
+		}
+	}
+	
+	
+
+	
+    
+    var a;
+    var b;
+    var itog;
+ </script>
+</body>
+</html>
